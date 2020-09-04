@@ -12,6 +12,7 @@ align-items: center;
     height: 60px;
     }
 @media (min-width: 768px) {
+    justify-content:center;
     border-bottom: none;
     margin: 0;
     background: white;
@@ -38,6 +39,29 @@ p{
 `;
 
 export const Img= styled.div`
+display: none;
+width:100%;
+max-width: 860px;
 
+img{
+    width: 51.27px;
+    height: 50px;
+}
+p{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 22px;
+    /* or 110% */
+    margin-left:5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+@media (min-width: 768px) {
+        display:flex;
+    }
 
 `;
