@@ -13,11 +13,11 @@ const GlobalStyle = createGlobalStyle`
         text-rendering: optimizeLegibility !important;
         margin: 0 ;
         height:100vh;
-
+        background:#F8FAFB;
     }
     a{
         color:black !important;
-  
+        text-decoration:none;
     }
     
 `;

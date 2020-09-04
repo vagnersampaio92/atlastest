@@ -8,7 +8,7 @@ const Homelogo = () => {
         <>
             <Container>
                 <div>
-                    <Img src={Logo} ></Img>
+                    <Img src={Logo} alt="logo git" ></Img>
                     <p>GitSearch</p>
                 </div>
             </Container>

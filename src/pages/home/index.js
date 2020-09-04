@@ -2,11 +2,11 @@ import React from 'react';
 import { Container, Img } from "./style"
 import Homelogo from '../../components/homelogo/index'
 import Homeinput from '../../components/homeinput/index'
-const Home = () => {
+const listusers = () => {
 
     return (
         <>
-            <Container>
+           <Container>
                 <Homelogo />
                 <Homeinput />
             </Container>
@@ -15,4 +15,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default listusers 
