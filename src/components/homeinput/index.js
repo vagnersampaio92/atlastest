@@ -20,7 +20,7 @@ const Homeinput = () => {
 
 
     return (
-        <>
+       
             <Container>
                 <input onChange={e => { hendlesearch({ ...searchobj, ["name"]: e.target.value }) }} value={searchobj.name}  ></input>
                 <Alignbutton >
@@ -34,7 +34,7 @@ const Homeinput = () => {
 
             </Container>
 
-        </>
+       
     )
 }
 

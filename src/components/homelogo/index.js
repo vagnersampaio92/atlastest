@@ -5,7 +5,7 @@ import Logo from '../../assets/logogit.png'
 const Homelogo = () => {
 
     return (
-        <>
+        
             <Container>
                 <div>
                     <Img src={Logo} alt="logo git" ></Img>
@@ -13,7 +13,7 @@ const Homelogo = () => {
                 </div>
             </Container>
 
-        </>
+     
     )
 }
 
