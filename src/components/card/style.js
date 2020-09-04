@@ -8,7 +8,7 @@ height: 215px; */
     display: flex;
    align-items: center;
    margin: 0 10px;
-  
+ 
    @media (min-width: 768px) {
         flex-direction: column;
         width: 140px;
@@ -36,10 +36,13 @@ p{
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
+    max-width:136px;
+    text-overflow: ellipsis;
     font-size: 15px;
     line-height: 36px;
     text-align: center;
     color: #162668;
+    word-wrap: break-word;
     margin-left:20px;
     @media (min-width: 768px) {
         font-size: 20px;

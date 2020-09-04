@@ -89,7 +89,7 @@ const Listusers = () => {
     async function user() {
         try {
             const response = await api.get('users/' + searchobj.name)
-            console.log(response)
+         
             let array = []
             array[0]=response.data
             setitems(array)
@@ -106,7 +106,7 @@ const Listusers = () => {
     function searchdetail(id) {
         console.log(id)
     }
-    console.log(items)
+ 
     return (
         <>
             <Header page="Lista de Usuários" />
