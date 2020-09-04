@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { SearchContext } from '../../store/index'
-import { Line, Container, Align } from "./style"
+import { Line, Container, Align, Input, Containerexternal, Alignsearch } from "./style"
 import api from '../../services/api'
 import Header from '../../components/header/index'
 import Card from '../../components/card/index'
+import SearchIcon from '@material-ui/icons/Search';
+
 const perfil = [
     {
         foto: 'https://avatars2.githubusercontent.com/u/2254731?v=4',
@@ -101,16 +103,26 @@ const Listusers = () => {
         <>
             <Header />
             <Align>
-                <Container >
+                <Containerexternal>
+                    <Alignsearch>
+                    <p>Search Results</p>
+                    <Input>
+                    <SearchIcon />
+                        <input></input>
+                    </Input>
+                    </Alignsearch>
+                   
+                    <Container >
 
-                    {perfil.map((p) => (
-                        <Line>
-                            <Card obj={p} />
-                        </Line>
-                    ))
-                    }
+                        {perfil.map((p) => (
+                            <Line>
+                                <Card obj={p} />
+                            </Line>
+                        ))
+                        }
 
-                </Container>
+                    </Container>
+                </Containerexternal>
             </Align>
 
 

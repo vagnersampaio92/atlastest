@@ -42,7 +42,7 @@ export const Img= styled.div`
 display: none;
 width:100%;
 max-width: 860px;
-
+margin-left:20px;
 img{
     width: 51.27px;
     height: 50px;
