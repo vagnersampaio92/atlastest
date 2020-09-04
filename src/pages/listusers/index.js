@@ -73,6 +73,7 @@ const Listusers = () => {
 
     const { searchobj } = useContext(SearchContext)
     const { setsearchobj } = useContext(SearchContext)
+    let [items, setitems] = useState([{}])
 
     useEffect(() => {
         load()
@@ -89,42 +90,52 @@ const Listusers = () => {
         try {
             const response = await api.get('users/' + searchobj.name)
             console.log(response)
+            let array = []
+            array[0]=response.data
+            setitems(array)
         } catch (err) {
         }
     }
     async function all() {
         try {
             const response = await api.get('search/users?q=' + searchobj.name + '&page=' + 0)
-            console.log(response)
+            setitems(response.data.items)
         } catch (err) {
         }
     }
+    function searchdetail(id) {
+        console.log(id)
+    }
+    console.log(items)
     return (
         <>
-            <Header />
-            <Align>
-                <Containerexternal>
-                    <Alignsearch>
-                    <p>Search Results</p>
-                    <Input>
-                    <SearchIcon />
-                        <input></input>
-                    </Input>
-                    </Alignsearch>
-                   
-                    <Container >
+            <Header page="Lista de Usuários" />
+            {items.length >0 &&
+                <Align>
+                    <Containerexternal>
+                        <Alignsearch>
+                            <p>Search Results</p>
+                            <Input>
+                                <SearchIcon />
+                                <input></input>
+                            </Input>
+                        </Alignsearch>
 
-                        {perfil.map((p) => (
-                            <Line>
-                                <Card obj={p} />
-                            </Line>
-                        ))
-                        }
+                        <Container >
 
-                    </Container>
-                </Containerexternal>
-            </Align>
+                            {items.map((i) => (
+                                <Line onClick={() => searchdetail(i.id)}>
+                                    <Card obj={i} />
+                                </Line>
+                            ))
+                            }
 
+                        </Container>
+                    </Containerexternal>
+                </Align>
+
+
+            }
 
 
 

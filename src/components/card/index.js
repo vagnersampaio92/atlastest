@@ -6,8 +6,8 @@ const listusers = ({obj}) => {
     return (
         
            <Container>
-               <img src={obj.foto}></img>
-               <p>{obj.name}</p>
+               <img src={obj.avatar_url}></img>
+               <p>{obj.login}</p>
             </Container>
 
         

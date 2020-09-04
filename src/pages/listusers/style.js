@@ -114,6 +114,7 @@ export const Line = styled.div`
  width:100%;
  border-bottom: 0.5px solid #90A4AE;
  padding:5px 0;
+ cursor: pointer;
  :last-child {
     border-bottom:none;
 }

@@ -4,7 +4,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Logo from '../../assets/logogit.png'
 import { Backdrop } from '@material-ui/core';
 
-const Header = () => {
+const Header = ({page}) => {
     function back(){
         
         window.history.back()
@@ -16,7 +16,7 @@ const Header = () => {
 
                 <Icon>
                     <ArrowBackIcon onClick={() => back()}/>
-                    <p>Lista de Usuários</p>
+                    <p>{page}</p>
                 </ Icon>
                 <Img >
                     <img src={Logo} alt="logo git" ></img>

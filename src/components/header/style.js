@@ -17,7 +17,7 @@ align-items: center;
     margin: 0;
     background: white;
     height: 60px;
-    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.05));
+    filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.07));
     
 }
 `;
