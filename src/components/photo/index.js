@@ -52,7 +52,7 @@ const Homelogo = ({ obj }) => {
             <Name>
                 <p>{obj.name}</p>
                 <div>
-                    <p><span><PersonIcon /></span>{obj.login}</p>
+                    <p><PersonIcon />{obj.login}</p>
                 </div>
             </Name>
         </Container>

@@ -62,6 +62,7 @@ flex-direction:column;
 justify-content: space-between;
 
 padding:10px;
+
 div{
     display: flex;
     width:100%;
@@ -83,6 +84,7 @@ div{
        
         margin-left: 3px;
     }
+    
 }
 @media (min-width: 480px) {
    margin-left:33px;
@@ -115,6 +117,10 @@ p{
    
 }
 div{
+    svg{
+        font-size: 20px;
+        margin-bottom:-2px;
+    }
     
     p{
         font-family: Montserrat;

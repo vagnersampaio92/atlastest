@@ -3,6 +3,7 @@ import { Align, Container } from "./style"
 import Header from '../../components/header/index'
 import api from '../../services/api'
 import Photo from '../../components/photo/index'
+import Info from '../../components/info/index'
 
 const Userprofile = () => {
     let [perfil, setperfil] = useState({})
@@ -27,7 +28,7 @@ const Userprofile = () => {
                 
                 <Align>
                 <Photo obj={perfil} />
-                {perfil.name}
+                <Info obj={perfil}/>
                 </Align>
             </Container>
 
