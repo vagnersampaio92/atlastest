@@ -2,17 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Img, Container, Menu, Content, Menuoptionselected, Menuoption, Bio, Repos } from "./style"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faLaptop } from '@fortawesome/free-solid-svg-icons'
+import Cardrepos from '../cardrepos/index'
+import api from '../../services/api'
 
 const Info = ({ obj }) => {
-    let [repos, setrepos] = useState({})
+    let [repos, setrepos] = useState([{}])
     let [menu, setmenu] = useState(1)
+
     useEffect(() => {
         loadrepos()
     }, []);
     async function loadrepos() {
-
+        try {
+            const response = await api.get('users/diego3g/repos')
+            let obj = {}
+            obj = response.data
+            setrepos(obj)
+        } catch (err) {
+        }
     }
-
+    console.log(repos)
     return (
         <Container>
             <Menu>
@@ -34,7 +43,15 @@ const Info = ({ obj }) => {
                     </Bio>}
                 {menu == 2 &&
                     <Repos>
-                        repos
+                        {repos.length>0&&
+                        <>
+                             {repos.map((repo) => (
+                                <Cardrepos repo={repo}/>
+                            ))
+                            }
+                        </>
+
+                        }
                    </Repos>}
             </Content>
         </Container>
