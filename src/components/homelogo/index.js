@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Img } from "./style"
 import Logo from '../../assets/logogit.png'
 
-const Homelogo = () => {
+const Photo = () => {
 
     return (
         
@@ -17,4 +17,4 @@ const Homelogo = () => {
     )
 }
 
-export default Homelogo
+export default Photo
