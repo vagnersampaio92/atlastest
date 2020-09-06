@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle} from '@fortawesome/free-solid-svg-icons'
 
 const listusers = ({repo}) => {
-let date='21/12/2020';
+
+
+// updated_at
 
     return (
         
@@ -14,11 +16,12 @@ let date='21/12/2020';
              </Description>
                 <div>
                     <Language>
-                    <p><FontAwesomeIcon icon={faCircle} />{repo.language}</p>
+                    <p><FontAwesomeIcon icon={faCircle}/>{repo.language}</p>
                     </Language>
                     <Date>
-                        <p>Atualizado em {date}</p>
                         
+                        {/* a função a baixo serve para formatar a data, ele divide a string em varias vezes e vai concatenando */}
+                        <p>Atualizado em {(repo.updated_at.split('T')[0]).split('-')[2].concat('/').concat((repo.updated_at.split('T')[0]).split('-')[1]).concat('/').concat((repo.updated_at.split('T')[0]).split('-')[0])}</p>
                     </Date>
                 </div>
             </Container>

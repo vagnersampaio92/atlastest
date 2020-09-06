@@ -4,15 +4,17 @@ import Header from '../../components/header/index'
 import api from '../../services/api'
 import Photo from '../../components/photo/index'
 import Info from '../../components/info/index'
+import { SearchContext } from '../../store/index'
 
 const Userprofile = () => {
     let [perfil, setperfil] = useState({})
+    const { selected } = useContext(SearchContext)
     useEffect(() => {
         load()
     }, []);
     async function load() {
         try {
-            const response = await api.get('users/diego3g')
+            const response = await api.get('users/'+selected)
             let obj = {}
             obj = response.data
             setperfil(obj)
@@ -20,7 +22,7 @@ const Userprofile = () => {
         }
 
     }
-    console.log(perfil)
+    
     return (
         <>
             <Header page="Perfil" />

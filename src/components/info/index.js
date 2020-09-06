@@ -1,27 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import { Img, Container, Menu, Content, Menuoptionselected, Menuoption, Bio, Repos } from "./style"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import Cardrepos from '../cardrepos/index'
 import api from '../../services/api'
+import { SearchContext } from '../../store/index'
 
 const Info = ({ obj }) => {
     let [repos, setrepos] = useState([{}])
     let [menu, setmenu] = useState(1)
-
+    const { selected } = useContext(SearchContext)
     useEffect(() => {
         loadrepos()
     }, []);
     async function loadrepos() {
         try {
-            const response = await api.get('users/diego3g/repos')
+            
+            const response = await api.get('users/'+selected+'/repos')
             let obj = {}
             obj = response.data
             setrepos(obj)
         } catch (err) {
         }
     }
-    console.log(repos)
+   
     return (
         <Container>
             <Menu>
@@ -50,9 +52,9 @@ const Info = ({ obj }) => {
                             ))
                             }
                         </>
-
                         }
-                   </Repos>}
+                   </Repos>
+                }
             </Content>
         </Container>
     )
