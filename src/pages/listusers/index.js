@@ -38,7 +38,6 @@ const Listusers = () => {
     async function user(name) {
         try {
             const response = await api.get('users/' + name)
-
             let array = []
             array[0] = response.data
             setitems(array)
@@ -62,8 +61,8 @@ const Listusers = () => {
     }
 
     async function fetchMoreData() {
-        const x = page + 1
-        const response = await api.get('search/users?q=' + search + '&page=' + x + '&per_page=10')
+        
+        const response = await api.get('search/users?q=' + search + '&page=' +  (page + 1)+ '&per_page=10')
         if ((response.data.total_count / 10) > items.length) {
             setpage(page + 1)
             setitems([...items, ...response.data.items])
@@ -83,7 +82,7 @@ const Listusers = () => {
                         <p>Search Results</p>
                         <Input>
                             <SearchIcon onClick={() => { all(search) }} />
-                            <input onChange={e => { setsearch(e.target.value) }}></input>
+                            <input onChange={e => { setsearch(e.target.value) }} ></input>
                         </Input>
                     </Alignsearch>
                     {items.length > 0 &&

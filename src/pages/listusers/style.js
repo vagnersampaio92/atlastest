@@ -115,10 +115,10 @@ flex-direction: column;
 flex-flow:row wrap;
 background:white;
 margin-top:5px;
+height:100%;
 
     .infinite-scroll-component__outerdiv{
         width:96%;
-        
     }
     /* 
         As classes:
@@ -129,14 +129,20 @@ margin-top:5px;
 @media (min-width: 768px) {
     .infinite-scroll-component__outerdiv{
         width:100%;
+        height: 100%;
+       
     }
     .infinite-scroll-component{
+       
         display:flex;
+        height:100% !important;
+        overflow:none !important;
         justify-content: center ;
         flex-direction: row ;
         flex-flow:row wrap ;
         padding:0 30px;
         margin-top:30px;
+        
     }
 }
 `;
@@ -147,15 +153,18 @@ export const Line = styled.div`
  border-bottom: 0.5px solid #90A4AE;
  padding:5px 0;
  cursor: pointer;
- :nth-last-child(-n+2) {
+
+@media (max-width: 767px) {
+    :nth-last-child(-n+2) {
     border-bottom:none;
 }
+}
  @media (min-width: 768px) {
-    border-bottom:none;    
+    /* border-bottom:none;     */
     margin: 0;
     width: 140px;
     height: 215px;
-
+    border:  0.5px solid #90A4AE;
     }
  
 `;
@@ -163,7 +172,14 @@ export const Line = styled.div`
 
 
 export const Loading = styled.h1`
-
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 36px;
+color: #162668;
+margin-top:10px;
+text-align:center;
+width:100%;
 `
 export const End = styled.h1`
 font-style: normal;

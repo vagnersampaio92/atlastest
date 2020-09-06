@@ -17,12 +17,14 @@ const Homeinput = () => {
         hendlesearch({ ...searchobj, ["type"]: 'user' })
 
     }
-
+    function clear(){
+        hendlesearch({ ...searchobj, ["name"]: '' })
+    }
 
     return (
        
             <Container>
-                <input onChange={e => { hendlesearch({ ...searchobj, ["name"]: e.target.value }) }} value={searchobj.name}  ></input>
+                <input onChange={e => { hendlesearch({ ...searchobj, ["name"]: e.target.value }) }} value={searchobj.name} onClick={()=>{clear()}} ></input>
                 <Alignbutton >
                     <Link to='listusers' onClick={() => searchall()}>
                         <Buttonall >Ver Todos</Buttonall>

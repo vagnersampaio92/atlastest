@@ -12,9 +12,9 @@ height: 215px; */
    @media (min-width: 768px) {
         flex-direction: column;
         width: 140px;
-        height: 215px;
+        height: 230px;
         justify-content: center;
-        border:  0.5px solid #90A4AE;
+        /* border:  0.5px solid #90A4AE; */
         margin: 0 0;
     }
    
