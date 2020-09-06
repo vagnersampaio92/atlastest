@@ -10,10 +10,24 @@ border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
 :last-child {
     border-bottom:none;
 }
+@media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+    }
 div{
     display:flex;
     justify-content: space-between;
+    @media (min-width: 768px) {
+        flex-direction: column;
+        
+       
+    }
    
+}
+span{
+    @media (min-width: 768px) {
+        max-width:75%;
+    }
 }
 `;
 export const Description = styled.div`

@@ -115,3 +115,25 @@ div{
 export const Repos = styled.div`
 
 `;
+export const Loading = styled.h1`
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 36px;
+color: #162668;
+margin-top:10px;
+text-align:center;
+width:100%;
+font-family: Montserrat;
+`
+export const End = styled.h1`
+font-family: Montserrat;
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 36px;
+color: #162668;
+margin-top:10px;
+text-align:center;
+width:100%;
+`

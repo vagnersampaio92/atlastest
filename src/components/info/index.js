@@ -1,29 +1,43 @@
-import React, {useContext, useState, useEffect } from 'react';
-import { Img, Container, Menu, Content, Menuoptionselected, Menuoption, Bio, Repos } from "./style"
+import React, { useContext, useState, useEffect } from 'react';
+import { Img, Container, Menu, Content, Menuoptionselected, Menuoption, Bio, Repos, Loading, End } from "./style"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faLaptop } from '@fortawesome/free-solid-svg-icons'
 import Cardrepos from '../cardrepos/index'
 import api from '../../services/api'
 import { SearchContext } from '../../store/index'
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Info = ({ obj }) => {
     let [repos, setrepos] = useState([{}])
     let [menu, setmenu] = useState(1)
     const { selected } = useContext(SearchContext)
+    let [end, setend] = useState(true)
+    let [page, setpage] = useState(0)
+    
     useEffect(() => {
         loadrepos()
     }, []);
     async function loadrepos() {
         try {
-            
-            const response = await api.get('users/'+selected+'/repos')
+
+            const response = await api.get('users/' + selected + '/repos')
             let obj = {}
             obj = response.data
             setrepos(obj)
         } catch (err) {
         }
     }
-   
+    async function fetchMoreData() {
+       
+        const response = await api.get('users/' + selected + '/repos?&page='+page+'&per_page=8')
+           if (response.data.length > 0) {
+            setpage(page + 1)
+            setrepos([...repos, ...response.data])
+        }else{
+            setend(false)
+        }
+    };
+
     return (
         <Container>
             <Menu>
@@ -33,9 +47,9 @@ const Info = ({ obj }) => {
             <Content>
                 {menu == 1 &&
                     <Bio>
-                        <h3>Bio</h3> 
+                        <h3>Bio</h3>
                         <p>{obj.bio}</p>
-                        <div> 
+                        <div>
                             <span>
                                 <FontAwesomeIcon icon={faHome} />
                             </span>
@@ -44,17 +58,26 @@ const Info = ({ obj }) => {
                         <div><FontAwesomeIcon icon={faLaptop} />{obj.blog}</div>
                     </Bio>}
                 {menu == 2 &&
-                    <Repos>
-                        {repos.length>0&&
-                        <>
-                             {repos.map((repo) => (
-                                <Cardrepos repo={repo}/>
-                            ))
+                    <InfiniteScroll
+                        dataLength={repos.length}
+                        next={() => { fetchMoreData() }}
+                        hasMore={end}
+                        loader={<Loading>Pesquisando ...</Loading>}
+                        endMessage={<End>Não há mais resultados</End>}
+                    >
+                        <Repos>
+                            {repos.length > 0 &&
+                                <>
+                                    {repos.map((repo) => (
+                                        <Cardrepos repo={repo} />
+                                    ))
+                                    }
+                                </>
                             }
-                        </>
-                        }
-                   </Repos>
+                        </Repos>
+                    </InfiniteScroll>
                 }
+
             </Content>
         </Container>
     )

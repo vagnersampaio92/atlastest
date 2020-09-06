@@ -31,9 +31,13 @@ const listusers = ({ repo }) => {
     return (
 
         <Container>
-            <Title>{repo.name}</Title>
-            <Description>{repo.description}
-            </Description>
+            <span>
+                <Title>{repo.name}</Title>
+                <Description>
+                    {repo.description}
+                </Description>
+            </span>
+
             <div>
                 <Language>
                     <p>{color()}{repo.language}</p>
