@@ -28,8 +28,8 @@ const Info = ({ obj }) => {
         }
     }
     async function fetchMoreData() {
-       
-        const response = await api.get('users/' + selected + '/repos?&page='+page+'&per_page=8')
+        
+        const response = await api.get('users/' + selected + '/repos?&page='+page+'&per_page=8') // per_page=8 limita os resultados 8 de cada vez
            if (response.data.length > 0) {
             setpage(page + 1)
             setrepos([...repos, ...response.data])
