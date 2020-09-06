@@ -12,7 +12,7 @@ const listusers = ({ repo }) => {
 
             case 'Java':
                 return <Java><FontAwesomeIcon icon={faCircle} /></Java>
-            case 'Php':
+            case 'PHP':
                 return <Php><FontAwesomeIcon icon={faCircle} /></Php>
 
             case 'Dart':

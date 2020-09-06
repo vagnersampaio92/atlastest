@@ -53,6 +53,7 @@ width:100%;
 
 p{
     display:none;
+
     @media (min-width: 768px) {
         display:block;
         font-family: Montserrat;
@@ -63,8 +64,22 @@ p{
         /* or 121% */
         color: #000000;
 
+   
+
     }
 }
+/* animation: yourAnimation 3s 1 0s linear;
+@keyframes yourAnimation{
+    0%{
+        transform: rotate(0) translateY(-1500%);
+        }
+    43%{
+        transform: rotate(0) translateY(-1000%);
+        }
+    99%{
+        transform: rotate(0) translateY(0%);
+        }
+} */
 @media (min-width: 768px) {
     width:90%;
     margin:0 52px 0 52px;
@@ -129,3 +144,10 @@ export const Line = styled.div`
 `;
 
 
+
+export const Loading = styled.h1`
+
+`
+export const End = styled.h1`
+
+`
