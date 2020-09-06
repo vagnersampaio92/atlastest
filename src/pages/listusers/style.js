@@ -147,7 +147,7 @@ export const Line = styled.div`
  border-bottom: 0.5px solid #90A4AE;
  padding:5px 0;
  cursor: pointer;
- :last-child {
+ :nth-last-child(-n+2) {
     border-bottom:none;
 }
  @media (min-width: 768px) {

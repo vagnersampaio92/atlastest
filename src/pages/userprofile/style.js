@@ -20,8 +20,8 @@ flex-direction:column;
 
 background:white;
 @media (min-width: 768px) {
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-    margin-top:30px;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
+    margin-top:0px;
   
 
     }

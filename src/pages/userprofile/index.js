@@ -12,16 +12,16 @@ const Userprofile = () => {
     const { selected } = useContext(SearchContext)
     const history = useHistory();
     useEffect(() => {
-        if(selected==''){
+        if (selected == '') {
             history.push("/");
-        }else{
+        } else {
             load()
         }
-        
+
     }, []);
     async function load() {
         try {
-            const response = await api.get('users/'+selected)
+            const response = await api.get('users/' + selected)
             let obj = {}
             obj = response.data
             setperfil(obj)
@@ -29,15 +29,15 @@ const Userprofile = () => {
         }
 
     }
-    
+
     return (
         <>
             <Header page="Perfil" />
             <Container>
-                
+
                 <Align>
-                <Photo obj={perfil} />
-                <Info obj={perfil}/>
+                    <Photo obj={perfil} />
+                    <Info obj={perfil} />
                 </Align>
             </Container>
 

@@ -1,13 +1,19 @@
 import styled from 'styled-components'
-export const Img= styled.img`
+export const Img = styled.img`
 width: 140px;
 height: 140px;
 
 `;
-export const Container= styled.div`
+export const Container = styled.div`
+@media (min-width: 768px) {
+    display:flex;
+    background:white;
+   
+
+    }
 
 `;
-export const Menu= styled.div`
+export const Menu = styled.div`
 display: flex;
 width:100%;
 font-family: Montserrat;
@@ -18,8 +24,16 @@ line-height: 22px;
 background: #F7F9FA;
 margin-top:30px;
 cursor: pointer;
+@media (min-width: 768px) {
+    flex-direction:column;
+    max-width:30%;
+    height:100vh;
+    background: white;
+  
+
+    }
 `;
-export const Menuoption= styled.div`
+export const Menuoption = styled.div`
 display: flex;
 width:100%;
 justify-content:center;
@@ -27,11 +41,13 @@ align-items:center;
 
 height: 50px;
 border-right: 1px solid #DAE5F0;
-:last-child {
-    border-right:none;
-}
+background: #F7F9FA;
+
+
+
 `;
-export const Menuoptionselected= styled.div`
+
+export const Menuoptionselected = styled.div`
 display: flex;
 width:100%;
 justify-content:center;
@@ -40,17 +56,33 @@ align-items:center;
 height: 50px;
 border-bottom: 3px solid #5C97D2;
 border-right: 1px solid #DAE5F0;
-:last-child {
+@media (max-width: 767px) {
+    :last-child {
     border-right:none;
+    }
+}
+@media (min-width: 768px) {
+    background: #F7F9FA;
+    border-right: 3px solid #5C97D2;
+    border-bottom: 1px solid #DAE5F0;
+    :last-child {
+    border-bottom:none;
+    border-top: 1px solid #DAE5F0;
+    }
 }
 `;
 
-export const Content= styled.div`
+export const Content = styled.div`
 background-color:white;
 padding:  20px;
+@media (min-width: 768px) {
+    
+    border-left: 1px solid #CECECE;
+
+}
 
 `;
-export const Bio= styled.div`
+export const Bio = styled.div`
 font-family: Montserrat;
 font-style: normal;
 background-color:white;
@@ -78,7 +110,8 @@ div{
     }
 }
 
+
 `;
-export const Repos= styled.div`
+export const Repos = styled.div`
 
 `;
