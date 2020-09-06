@@ -13,21 +13,22 @@ const Listusers = () => {
     const { hendleselected } = useContext(SearchContext)
 
     let [items, setitems] = useState([{}])
+    let [search, setsearch] = useState([{}])
 
     useEffect(() => {
         load()
     }, []);
     function load() {
         if (searchobj.type == 'user') {
-            user()
+            user(searchobj.name)
         } else {
-            all()
+            all(searchobj.name)
         }
 
     }
-    async function user() {
+    async function user(name) {
         try {
-            const response = await api.get('users/' + searchobj.name)
+            const response = await api.get('users/' + name)
 
             let array = []
             array[0] = response.data
@@ -35,9 +36,9 @@ const Listusers = () => {
         } catch (err) {
         }
     }
-    async function all() {
+    async function all(name) {
         try {
-            const response = await api.get('search/users?q=' + searchobj.name + '&page=' + 0)
+            const response = await api.get('search/users?q=' +name + '&page=' + 0)
             setitems(response.data.items)
         } catch (err) {
         }
@@ -50,17 +51,17 @@ const Listusers = () => {
     return (
         <>
             <Header page="Lista de Usuários" />
-            {items.length > 0 &&
+            
                 <Align>
                     <Containerexternal>
                         <Alignsearch>
                             <p>Search Results</p>
                             <Input>
-                                <SearchIcon />
-                                <input></input>
+                                <SearchIcon onClick={()=>{all(search)}} />
+                                <input onChange={e => { setsearch(e.target.value) }}></input>
                             </Input>
                         </Alignsearch>
-
+                        {items.length > 0 &&
                         <Container >
 
                             {items.map((i) => (
@@ -73,11 +74,12 @@ const Listusers = () => {
                             }
 
                         </Container>
+                        }
                     </Containerexternal>
                 </Align>
 
 
-            }
+            
 
 
 

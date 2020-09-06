@@ -5,12 +5,19 @@ import api from '../../services/api'
 import Photo from '../../components/photo/index'
 import Info from '../../components/info/index'
 import { SearchContext } from '../../store/index'
+import { useHistory } from 'react-router-dom';
 
 const Userprofile = () => {
     let [perfil, setperfil] = useState({})
     const { selected } = useContext(SearchContext)
+    const history = useHistory();
     useEffect(() => {
-        load()
+        if(selected==''){
+            history.push("/");
+        }else{
+            load()
+        }
+        
     }, []);
     async function load() {
         try {
