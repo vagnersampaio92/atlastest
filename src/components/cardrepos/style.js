@@ -45,3 +45,21 @@ line-height: 21px;
 color: #586069;
 
 `;
+export const Javascript = styled.span`
+color:#f1e05a;
+`;
+export const Java = styled.span`
+color:#b07219;
+`;
+export const Php = styled.span`
+color:#BD0000;
+`;
+export const Dart = styled.span`
+color:#31BD00;
+`;
+export const Cpp = styled.span`
+color:#00B2BD;
+`;
+export const Default = styled.span`
+color:#586069;
+`;
