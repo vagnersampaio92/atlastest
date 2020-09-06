@@ -5,8 +5,9 @@ import api from '../../services/api'
 import Header from '../../components/header/index'
 import Card from '../../components/card/index'
 import SearchIcon from '@material-ui/icons/Search';
-import { Link } from 'react-router-dom'
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useHistory } from 'react-router-dom';
+
 
 const Listusers = () => {
 
@@ -17,6 +18,8 @@ const Listusers = () => {
     let [search, setsearch] = useState([{}])
     let [page, setpage] = useState(0)
     let [end, setend] = useState(true)
+
+    const history = useHistory();
 
     useEffect(() => {
         load()
@@ -31,6 +34,7 @@ const Listusers = () => {
         }
 
     }
+  
     async function user(name) {
         try {
             const response = await api.get('users/' + name)
@@ -51,7 +55,9 @@ const Listusers = () => {
         }
     }
     function searchdetail(login) {
+       
         hendleselected(login)
+        history.push("userprofile");
 
     }
 
@@ -65,7 +71,7 @@ const Listusers = () => {
             setend(false)
         }
     };
-  console.log(end)
+ 
 
     return (
         <>
@@ -91,11 +97,11 @@ const Listusers = () => {
                                 endMessage={<End>Não há mais resultados</End>}
                             >
                                 {items.map((i, index) => (
-                                    <Link onClick={() => searchdetail(i.login)} to="userprofile" key={index}>
-                                        <Line >
+                                    
+                                        <Line onClick={() => searchdetail(i.login)} key={index}>
                                             <Card obj={i} />
                                         </Line>
-                                    </Link>
+                                   
                                 ))
                                 }
                             </InfiniteScroll>
