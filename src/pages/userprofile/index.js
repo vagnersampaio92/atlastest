@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Align, Container } from "./style"
+import { Align, Container, Containerexternal } from "./style"
 import Header from '../../components/header/index'
 import api from '../../services/api'
 import Photo from '../../components/photo/index'

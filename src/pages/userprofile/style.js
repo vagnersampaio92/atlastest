@@ -7,8 +7,12 @@ display:flex;
 flex-direction: column;
 align-items: center;
 
+@media (min-width: 768px) {
+    margin-top:30px;
 
+    }
 `
+
 
 export const Align = styled.div`
  width: 100%;

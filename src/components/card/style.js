@@ -8,6 +8,7 @@ height: 215px; */
     display: flex;
    align-items: center;
    margin: 0 10px;
+  
  
    @media (min-width: 768px) {
         flex-direction: column;
@@ -39,7 +40,7 @@ p{
  
     text-overflow: ellipsis;
     font-size: 15px;
-    line-height: 36px;
+    line-height: 18px;
     text-align: center;
     color: #162668;
     word-wrap: break-word;
