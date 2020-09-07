@@ -7,6 +7,7 @@ font-style: normal;
 font-weight: 600;
 padding:7px;
 border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+width:100%;
 :last-child {
     border-bottom:none;
 }
@@ -40,6 +41,7 @@ margin-left:10px;
 export const Title = styled.div`
 font-size: 14px;
 line-height: 21px;
+width:100%;
 color: #0366D6;
 
 `;

@@ -171,7 +171,23 @@ line-height: 36px;
 color: #162668;
 margin-top:10px;
 text-align:center;
+font-family: Montserrat;
 width:100%;
+animation: yourAnimation 1s infinite 0s linear;
+@keyframes yourAnimation{
+    0%{
+        transform: rotate(0);
+        opacity: 0;
+        }
+    51%{
+        transform: rotate(0);
+        opacity: 0.5;
+        }
+    100%{
+        transform: rotate(0);
+        opacity: 1;
+        }
+}
 `
 export const End = styled.h1`
 font-style: normal;
@@ -179,7 +195,35 @@ font-weight: 600;
 font-size: 15px;
 line-height: 36px;
 color: #162668;
+font-family: Montserrat;
 margin-top:10px;
 text-align:center;
 width:100%;
 `
+
+export const Animation = styled.div`
+
+font-weight: 600;
+font-size: 30px;
+color: #162668;
+font-family: Montserrat;
+width:100%;
+text-align:center;
+animation: yourAnimation 1s infinite 0s linear;
+@keyframes yourAnimation{
+    0%{
+        transform: rotate(0);
+        opacity: 0;
+        }
+    51%{
+        transform: rotate(0);
+        opacity: 0.5;
+        }
+    100%{
+        transform: rotate(0);
+        opacity: 1;
+        }
+}
+`
+
+

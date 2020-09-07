@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { SearchContext } from '../../store/index'
-import { Line, Container, Align, Input, Containerexternal, Alignsearch, Loading, End } from "./style"
+import { Line, Container, Align, Input, Containerexternal, Alignsearch, Loading, End,Animation } from "./style"
 import api from '../../services/api'
 import Header from '../../components/header/index'
 import Card from '../../components/card/index'
@@ -16,8 +16,9 @@ const Listusers = () => {
 
     let [items, setitems] = useState([{}])
     let [search, setsearch] = useState([{}])
-    let [page, setpage] = useState(0)
+    let [page, setpage] = useState(1)
     let [end, setend] = useState(true)
+    let [animationflag, setanimationflag] = useState(true)
 
     const history = useHistory();
 
@@ -28,9 +29,11 @@ const Listusers = () => {
         if (searchobj.type == 'user') {
             user(searchobj.name)
             setsearch(searchobj.name)
+               
         } else {
             all(searchobj.name)
             setsearch(searchobj.name)
+               
         }
 
     }
@@ -41,6 +44,7 @@ const Listusers = () => {
             let array = []
             array[0] = response.data
             setitems(array)
+            setanimationflag(false)
         } catch (err) {
         }
     }
@@ -48,8 +52,8 @@ const Listusers = () => {
         try {
             const response = await api.get('search/users?q=' + name + '&page=' + page + '&per_page=10')
             setitems(response.data.items)
-
-
+            setanimationflag(false)
+            
         } catch (err) {
         }
     }
@@ -61,14 +65,18 @@ const Listusers = () => {
     }
 
     async function fetchMoreData() {
-
-        const response = await api.get('search/users?q=' + search + '&page=' + (page + 1) + '&per_page=10')
-        if ((response.data.total_count / 10) > items.length) {
-            setpage(page + 1)
-            setitems([...items, ...response.data.items])
-        } else {
-            setend(false)
+        if (searchobj.type != 'user') {
+            const response = await api.get('search/users?q=' + search + '&page=' + (page+1) + '&per_page=10')
+            if ((response.data.total_count / 10) > items.length) {
+                setpage(page + 1)
+                setitems([...items, ...response.data.items])
+                setanimationflag(false)
+            } else {
+                setend(false)
+            }
         }
+
+
     };
 
 
@@ -85,33 +93,49 @@ const Listusers = () => {
                             <input onChange={e => { setsearch(e.target.value) }} ></input>
                         </Input>
                     </Alignsearch>
-                    {items.length > 0 &&
+            
+                   
+                    {animationflag == true?
+                    <Animation>
+                        Carregando<span>...</span>
+                    </Animation>:<>
+                    
+                    {searchobj.type == 'user' ?
+                        <Container >
+                            <Line onClick={() => searchdetail(searchobj.name)}>
+                                <Card obj={items[0]} />
+                            </Line>
+                        </Container> : <>
+                            {items.length > 0 &&
+                                <InfiniteScroll
+                                    dataLength={items.length}
+                                    next={() => { fetchMoreData() }}
+                                    hasMore={end}
+                                    scrollThreshold="1px"
+                                    scrollableTarget={Align}
+                                    loader={<Loading>Pesquisando ...</Loading>}
+                                    endMessage={<End>Não há mais resultados</End>}
+                                >
+                                    <Container >
+                                        {items.map((i, index) => (
 
+                                            <Line onClick={() => searchdetail(i.login)} key={index}>
+                                                <Card obj={i} />
+                                            </Line>
 
-                        <InfiniteScroll
-                            dataLength={items.length}
-                            next={() => { fetchMoreData() }}
-                            hasMore={end}
-                            scrollThreshold="1px"
-                            scrollableTarget= {Align}
-                            loader={<Loading>Pesquisando ...</Loading>}
-                            endMessage={<End>Não há mais resultados</End>}
-                        >
-                            <Container >
-                                {items.map((i, index) => (
+                                        ))
+                                        }
 
-                                    <Line onClick={() => searchdetail(i.login)} key={index}>
-                                        <Card obj={i} />
-                                    </Line>
-
-                                ))
-                                }
-
-                            </Container>
-                        </InfiniteScroll>
-
+                                    </Container>
+                                </InfiniteScroll>
+                            }
+                        </>
 
                     }
+                    
+                    </>
+                    }
+
                 </Containerexternal>
             </Align>
 

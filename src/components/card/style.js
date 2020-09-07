@@ -36,7 +36,7 @@ p{
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
-    max-width:136px;
+ 
     text-overflow: ellipsis;
     font-size: 15px;
     line-height: 36px;
@@ -47,6 +47,7 @@ p{
     @media (min-width: 768px) {
         font-size: 20px;
         margin-left:0px;
+        max-width:136px;
         
     }
 }
