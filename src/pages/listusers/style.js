@@ -7,7 +7,7 @@ justify-content: center;
 @media (min-width: 768px) {
    
     flex-direction: row;
-  
+    
 
     }
  
@@ -98,12 +98,16 @@ background:white;
 padding-bottom:50px;
 
 
+
 @media (min-width: 768px) {
-    justify-content: center;
+    
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     margin-top:50px;
+    min-height:100vh;
 
     }
+
+
 
 `;
 
@@ -115,37 +119,25 @@ flex-direction: column;
 flex-flow:row wrap;
 background:white;
 margin-top:5px;
-height:100%;
-
-    .infinite-scroll-component__outerdiv{
-        width:96%;
-    }
-    /* 
-        As classes:
-        - infinite-scroll-component__outerdiv 
-        - nfinite-scroll-component
-        são originais do componets InfiniteScroll, por isso ela são estilizado com classe e possuem esses nomes       
-    */
+height:auto;
+/* min-height:1024px; */
 @media (min-width: 768px) {
-    .infinite-scroll-component__outerdiv{
-        width:100%;
-        height: 100%;
+
        
-    }
-    .infinite-scroll-component{
-       
-        display:flex;
-        height:100% !important;
-        overflow:none !important;
         justify-content: center ;
         flex-direction: row ;
         flex-flow:row wrap ;
         padding:0 30px;
         margin-top:30px;
-        
-    }
+   
+}
+@media (min-width: 1201px) {
+      
+      
+        height:100%;
 }
 `;
+
 
 export const Line = styled.div`
  margin: 0 10px;
@@ -160,7 +152,7 @@ export const Line = styled.div`
 }
 }
  @media (min-width: 768px) {
-    /* border-bottom:none;     */
+    
     margin: 0;
     width: 140px;
     height: 215px;

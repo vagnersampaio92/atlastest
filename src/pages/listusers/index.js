@@ -34,7 +34,7 @@ const Listusers = () => {
         }
 
     }
-  
+
     async function user(name) {
         try {
             const response = await api.get('users/' + name)
@@ -48,29 +48,29 @@ const Listusers = () => {
         try {
             const response = await api.get('search/users?q=' + name + '&page=' + page + '&per_page=10')
             setitems(response.data.items)
-            
-            
+
+
         } catch (err) {
         }
     }
     function searchdetail(login) {
-       
+
         hendleselected(login)
         history.push("userprofile");
 
     }
 
     async function fetchMoreData() {
-        
-        const response = await api.get('search/users?q=' + search + '&page=' +  (page + 1)+ '&per_page=10')
+
+        const response = await api.get('search/users?q=' + search + '&page=' + (page + 1) + '&per_page=10')
         if ((response.data.total_count / 10) > items.length) {
             setpage(page + 1)
             setitems([...items, ...response.data.items])
-        }else{
+        } else {
             setend(false)
         }
     };
- 
+
 
     return (
         <>
@@ -86,26 +86,31 @@ const Listusers = () => {
                         </Input>
                     </Alignsearch>
                     {items.length > 0 &&
-                        <Container >
 
-                            <InfiniteScroll
-                                dataLength={items.length}
-                                next={() => { fetchMoreData() }}
-                                hasMore={end}
-                                loader={<Loading>Pesquisando ...</Loading>}
-                                endMessage={<End>Não há mais resultados</End>}
-                            >
+
+                        <InfiniteScroll
+                            dataLength={items.length}
+                            next={() => { fetchMoreData() }}
+                            hasMore={end}
+                            scrollThreshold="1px"
+                            scrollableTarget= {Align}
+                            loader={<Loading>Pesquisando ...</Loading>}
+                            endMessage={<End>Não há mais resultados</End>}
+                        >
+                            <Container >
                                 {items.map((i, index) => (
-                                    
-                                        <Line onClick={() => searchdetail(i.login)} key={index}>
-                                            <Card obj={i} />
-                                        </Line>
-                                   
+
+                                    <Line onClick={() => searchdetail(i.login)} key={index}>
+                                        <Card obj={i} />
+                                    </Line>
+
                                 ))
                                 }
-                            </InfiniteScroll>
 
-                        </Container>
+                            </Container>
+                        </InfiniteScroll>
+
+
                     }
                 </Containerexternal>
             </Align>
