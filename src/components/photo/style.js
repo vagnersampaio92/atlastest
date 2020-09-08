@@ -113,6 +113,11 @@ p{
     
     @media (min-width: 768px) {
             text-align: right;
+            font-size: 20px;
+        }
+        @media (min-width: 1201px) {
+            text-align: right;
+            font-size: 24px;
         }
    
 }
